@@ -51,8 +51,8 @@ class App extends Component {
              className="square">
 
           <div className="overlay"></div>
-           <img className="drag-icon" src={require('./frames/drag.png')} alt=""/>
-          <img className="frame" src={require('./frames/full' + this.state.frame + '.jpg')} alt=""/>
+           <img className="drag-icon" src={require('../public/assets/drag.png')} alt=""/>
+          <img className="frame" src={require('../public/assets/frames/full' + this.state.frame + '.jpg')} alt=""/>
         </div>
           {this.state.direction !== '' && <h3>{this.state.direction} - {this.state.pageY}</h3>}
       </div>
