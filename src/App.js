@@ -67,8 +67,6 @@ class App extends Component {
                      <img className={"frame-full" + frame} src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAcwAAAF3AQMAAAASGOlzAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAACxJREFUeNrtwQENAAAAwqD3T20ON6AAAAAAAAAAAAAAAAAAAAAAAAAAAAC4N1ZtAAES7A1ZAAAAAElFTkSuQmCC" alt=""/>
                      <div className="overlay"></div>
                      <img className="drag-icon" src={require('../public/assets/drag.png')} alt=""/>
-                        {/*<img className="frame" src={require('../public/assets/frames/full' + this.state.frame + '.jpg')} alt=""/>*/}
-                        {/*<img className="frame" src={frames[frame]} alt=""/>*/}
                 </div>
                 <a className="source_link" target="_blank" href="https://github.com/edindelan/Tesla-Model-X-Falcon-doors">Source code - GitHub</a>
             </div>

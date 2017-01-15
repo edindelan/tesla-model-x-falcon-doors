@@ -47,7 +47,7 @@ h3{
 .App .square{
   background-color: #fff;
   max-width: 460px;
-  min-width: 400px;
+  min-width: 320px;
   width: 100%;
   height:auto;
   margin: auto;
