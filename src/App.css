@@ -1,3 +1,11 @@
+h1{
+  font-weight:100;
+}
+h3{
+  font-size: 18px;
+  font-weight:100;
+}
+
 .App {
   text-align: center;
   width: 100%;
@@ -20,17 +28,28 @@
   font-size: large;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.App .source_link {
+  text-decoration: none;
+  display: inline-block;
+  color: #666;
+  font-size: 18px;
+  margin-top: 30px;
+}
+
+.App .source_link:hover {
+  text-decoration: underline;
+}
+
+.App .source_link:visited {
+  color: #666;
 }
 
 .App .square{
-  background-color: #333;
-  max-width: 550px;
+  background-color: #fff;
+  max-width: 460px;
   min-width: 400px;
   width: 100%;
-  height: auto;
+  height:auto;
   margin: auto;
   position: relative;
   cursor: move;
