@@ -1,36 +1,24 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import {openFalconDoors, closeFalconDoors} from './actions';
+import frames from './frames';
 import './App.css';
 
 class App extends Component {
-    state = {
-        pageY: 0,
-        direction: '',
-        frame: 41
-    }
+    pageY = 0;
 
     mouseDownEvent = () => {
         this.refs.square.addEventListener('mousemove', this.mouseMoveEvent);
     };
 
     mouseMoveEvent = (e) => {
-        let direction = '';
-        const pageY = e.pageY;
-        if(pageY < this.state.pageY){
-            direction = 'UP';
-            this.setState({direction});
-            if(this.state.frame < 41 && pageY % 3 === 0){
-                this.setState({frame: this.state.frame + 1})
-            }
-        } else if(pageY > this.state.pageY){
-            direction = 'DOWN';
-            this.setState({direction});
-            if(this.state.frame > 1 && pageY % 3 === 0){
-                this.setState({frame: this.state.frame - 1})
-            }
+        if(this.pageY > e.pageY){
+            this.props.openFalconDoors(e.pageY);
+        } else if (this.pageY < e.pageY){
+            this.props.closeFalconDoors(e.pageY);
         }
-
-        this.setState({pageY});
-
+        this.pageY = e.pageY;
     };
 
     mouseUpEvent = () => {
@@ -41,23 +29,38 @@ class App extends Component {
         this.refs.square.removeEventListener('mousemove', this.mouseMoveEvent);
     };
 
-  render() {
-    return (
-      <div className="App">
-        <div ref="square"
-             onMouseDown={this.mouseDownEvent}
-             onMouseUp={this.mouseUpEvent}
-             onMouseLeave={this.mouseLeaveEvent}
-             className="square">
+    render() {
+        const {frame, direction, pageY} = this.props.state;
+        return (
+            <div className="App">
+                <div ref="square"
+                     onMouseDown={this.mouseDownEvent}
+                     onMouseUp={this.mouseUpEvent}
+                     onMouseLeave={this.mouseLeaveEvent}
+                     className="square">
 
-          <div className="overlay"></div>
-           <img className="drag-icon" src={require('../public/assets/drag.png')} alt=""/>
-          <img className="frame" src={require('../public/assets/frames/full' + this.state.frame + '.jpg')} alt=""/>
-        </div>
-          {this.state.direction !== '' && <h3>{this.state.direction} - {this.state.pageY}</h3>}
-      </div>
-    );
-  }
+                    <div className="overlay"></div>
+                    <img className="drag-icon" src={require('../public/assets/drag.png')} alt=""/>
+                    {/*<img className="frame" src={require('../public/assets/frames/full' + this.state.frame + '.jpg')} alt=""/>*/}
+                    <img className="frame" src={frames[frame]} alt=""/>
+                </div>
+                {direction !== '' && <h3>{direction} - {pageY}</h3>}
+            </div>
+        );
+    }
 }
 
-export default App;
+function mapStateToProps(state) {
+    return {
+        state
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({
+        openFalconDoors,
+        closeFalconDoors
+    }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
