@@ -6,7 +6,7 @@ const defaultState = {
 export default (state = defaultState, action) => {
     switch (action.type){
         case 'OPEN_FALCON_DOORS':
-            if(state.frame < 41 && action.pageY % 2 === 0){
+            if(state.frame < 41 && action.pageY % 3 === 0){
                 return {
                     ...state,
                     frame: state.frame + 1,
@@ -15,7 +15,7 @@ export default (state = defaultState, action) => {
             }
             return state;
         case 'CLOSE_FALCON_DOORS':
-            if(state.frame > 1 && action.pageY % 2 === 0){
+            if(state.frame > 1 && action.pageY % 3 === 0){
                 return {
                     ...state,
                     frame: state.frame - 1,

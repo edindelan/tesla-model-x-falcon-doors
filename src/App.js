@@ -14,12 +14,12 @@ class App extends Component {
     }
 
     mouseDownEvent = () => {
-        this.refs.square.addEventListener('mousemove', this.mouseMoveEvent);
+        this.refs.square.addEventListener('mousemove', this.mouseMoveEvent, false);
     };
 
     touchStart = () => {
         document.body.style.overflow = "hidden";
-        this.refs.square.addEventListener('touchmove', this.mouseMoveEvent);
+        this.refs.square.addEventListener('touchmove', this.mouseMoveEvent, false);
     };
 
     touchEnd = () => {
